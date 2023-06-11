@@ -2,9 +2,11 @@ const fs = require('fs');
 
 class ProductManager {
     constructor(pathToFile) {
-        this.products = [];
         this.count = 0;
+        this.products = [];
         this.path = pathToFile;
+
+        this.loadFromFile();
     }
 
     getProducts = () => {
@@ -25,7 +27,6 @@ class ProductManager {
 
     addProduct = (product) => {
         const productToAdd = {
-            id: this.count,
             title: product.title,
             description: product.description,
             price: product.price,
@@ -42,8 +43,13 @@ class ProductManager {
             throw new Error('Duplicated product code');
         }
 
-        this.products.push(productToAdd);
+        productToAdd.id = this.count;
+
         this.count++;
+        this.products.push(productToAdd);
+        this.saveToFile();
+
+        return productToAdd.id;
     };
 
     updateProduct = (id, fields) => {
@@ -53,7 +59,10 @@ class ProductManager {
             throw new Error('Product ID not found');
         }
 
+        delete fields.id;
+
         this.products[productPos] = { ...this.products[productPos], ...fields };
+        this.saveToFile();
     };
 
     deleteProduct = (id) => {
@@ -64,23 +73,31 @@ class ProductManager {
         }
 
         this.products = updatedList;
+        this.saveToFile();
+    };
+
+    loadFromFile = async () => {
+        try {
+            await fs.promises.access(this.path, fs.constants.F_OK | fs.constants.R_OK);
+
+            const fileContent = await fs.promises.readFile(this.path, 'utf-8');
+            const parsedContent = JSON.parse(fileContent);
+            
+            this.count = parsedContent.count || 0;
+            this.products = parsedContent.products || [];
+        } catch {
+            console.error('Could not load from ' + this.path);
+        }
     };
 
     saveToFile = async () => {
-        await fs.promises.writeFile(this.path, JSON.stringify(this.products))
-    }
+        try {
+            const dataObject = { count: this.count, products: this.products };
+            const dataAsJson = JSON.stringify(dataObject);
 
-    loadFromFile = async () => {
-        if (!fs.existsSync(this.path)) {
+            await fs.promises.writeFile(this.path, dataAsJson);
+        } catch {
+            console.error('Could not save to ' + this.path);
         }
-
-        const fileContent = await fs.promises.readFile(this.path, 'utf-8');
-        const parsedContent = JSON.parse(fileContent);
-
-        if (!Array.isArray(parsedContent)) {
-            return;
-        }
-        
-        this.products = parsedContent;
     };
 }
