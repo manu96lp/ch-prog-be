@@ -1,0 +1,95 @@
+{
+    "count": 10,
+    "products": [
+        {
+            "id": 0,
+            "title": "Manzana",
+            "description": "Una manzana",
+            "price": 10.0,
+            "thumbnail": null,
+            "code": "MANZANA",
+            "stock": 1
+        },
+        {
+            "id": 1,
+            "title": "Pera",
+            "description": "Una Pera",
+            "price": 20.0,
+            "thumbnail": null,
+            "code": "PERA",
+            "stock": 2
+        },
+        {
+            "id": 2,
+            "title": "Banana",
+            "description": "Una banana",
+            "price": 30.0,
+            "thumbnail": null,
+            "code": "BANANA",
+            "stock": 3
+        },
+        {
+            "id": 3,
+            "title": "Naranja",
+            "description": "Una naranja",
+            "price": 40.0,
+            "thumbnail": null,
+            "code": "NARANJA",
+            "stock": 4
+        },
+        {
+            "id": 4,
+            "title": "Kiwi",
+            "description": "Un kiwi",
+            "price": 50.0,
+            "thumbnail": null,
+            "code": "KIWI",
+            "stock": 5
+        },
+        {
+            "id": 5,
+            "title": "Durazno",
+            "description": "Un durazno",
+            "price": 60.0,
+            "thumbnail": null,
+            "code": "DURAZNO",
+            "stock": 6
+        },
+        {
+            "id": 6,
+            "title": "Frutilla",
+            "description": "Una frutilla",
+            "price": 70.0,
+            "thumbnail": null,
+            "code": "FRUTILLA",
+            "stock": 7
+        },
+        {
+            "id": 7,
+            "title": "Cereza",
+            "description": "Una cereza",
+            "price": 80.0,
+            "thumbnail": null,
+            "code": "CEREZA",
+            "stock": 8
+        },
+        {
+            "id": 8,
+            "title": "Mandarina",
+            "description": "Una mandarina",
+            "price": 90.0,
+            "thumbnail": null,
+            "code": "MANDARINA",
+            "stock": 9
+        },
+        {
+            "id": 9,
+            "title": "Limon",
+            "description": "Un limon",
+            "price": 100.0,
+            "thumbnail": null,
+            "code": "LIMON",
+            "stock": 10
+        }
+    ]
+}
