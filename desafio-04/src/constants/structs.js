@@ -100,7 +100,7 @@ export const createCartRequestStruct = {
                 return false;
             },
         },
-        required: true,
+        required: false,
     },
 };
 

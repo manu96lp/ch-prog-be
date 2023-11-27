@@ -22,13 +22,15 @@ router.post('/', async (req, res) => {
         
         const productsToSet = [];
         
-        req.body.products.forEach((x) => {
-            productManager.getProductById(x.product);
-            productsToSet.push({
-                product: x.product,
-                quantity: Math.max(1, x.quantity || 1),
+        if (req?.body?.products) {
+            req.body.products.forEach((x) => {
+                productManager.getProductById(x.product);
+                productsToSet.push({
+                    product: x.product,
+                    quantity: Math.max(1, x.quantity || 1),
+                });
             });
-        });
+        }
 
         const result = await cartManager.createCart(productsToSet);
 
