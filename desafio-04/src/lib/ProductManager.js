@@ -28,6 +28,8 @@ class ProductManager {
     };
 
     addProduct = async (product) => {
+        await this.loadFromFile();
+
         const productToAdd = {
             title: product.title,
             description: product.description,
@@ -58,6 +60,8 @@ class ProductManager {
     };
 
     updateProduct = async (id, fields) => {
+        await this.loadFromFile();
+
         const productPos = this.products.findIndex((x) => x.id === id);
 
         if (productPos === -1) {
@@ -81,6 +85,8 @@ class ProductManager {
     };
 
     deleteProduct = async (id) => {
+        await this.loadFromFile();
+        
         const updatedList = this.products.filter((x) => x.id !== id);
 
         if (updatedList.length === this.products.length) {

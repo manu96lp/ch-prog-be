@@ -28,6 +28,8 @@ class CartManager {
     };
 
     createCart = async (products) => {
+        await this.loadFromFile();
+
         const cart = {
             id: this.count,
             products: [...products],
@@ -42,6 +44,8 @@ class CartManager {
     };
 
     updateCart = async (id, products) => {
+        await this.loadFromFile();
+
         const cartPos = this.carts.findIndex((x) => x.id === id);
 
         if (cartPos === -1) {
@@ -54,6 +58,8 @@ class CartManager {
     };
 
     deleteCart = async (id) => {
+        await this.loadFromFile();
+        
         const updatedList = this.carts.filter((x) => x.id !== id);
 
         if (updatedList.length === this.carts.length) {
