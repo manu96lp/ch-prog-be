@@ -1,0 +1,47 @@
+<div class="d-flex w-100 p-3 mx-auto flex-column">
+    <header class="mb-auto">
+        <div>
+            <h3 class="float-md-start mb-0">CoderHouse Challenge</h3>
+            <nav class="nav nav-masthead justify-content-center float-md-end">
+                <a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="/">Home</a>
+                <a class="nav-link fw-bold py-1 px-0" href="/realTimeProducts">Real Time Products</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="p-5">
+        <h1>Static Products</h1>
+        <p class="lead">
+            You are actually viewing a static list of products.<br>
+            You can go to "Real Time Products" to get a list of products that is constantly updated.
+        </p>
+
+        <div class="album py-5 bg-body-dark">
+            <div class="container">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                    {{#each products}}
+                    <div class="col">
+                        <div class="card mx-auto" style="width: 18rem;">
+                            <img
+                                class="product-image"
+                                src="{{this.image}}"
+                                onerror="this.onerror=null;this.src='/static/images/error.jpg';"
+                                alt="product-image"
+                            >
+                            <div class="card-body">
+                                <h5 class="card-title">{{this.title}}</h5>
+                                <p class="card-text">{{this.description}}</p>
+                                <p class="card-text text-primary">${{this.price}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="mt-auto text-white-50">
+        <p>Code available on <a href="https://github.com/manu96lp/ch-prog-be" class="text-white">GitHub</a>.</p>
+    </footer>
+</div>
