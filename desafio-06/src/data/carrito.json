@@ -1,0 +1,14 @@
+{
+    "count": 2,
+    "carts": [
+        {
+            "id": 1,
+            "products": [
+                {
+                    "product": 11,
+                    "quantity": 1
+                }
+            ]
+        }
+    ]
+}

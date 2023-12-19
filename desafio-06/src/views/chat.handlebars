@@ -1,0 +1,63 @@
+<div class="d-flex w-100 p-3 mx-auto flex-column">
+    <header class="mb-auto">
+        <div>
+            <h4 class="float-md-start mb-0">CoderHouse Challenge</h4>
+            <nav class="nav nav-masthead justify-content-center float-md-end">
+                <a class="nav-link fw-bold py-1 px-0" href="/">Home</a>
+                <a class="nav-link fw-bold py-1 px-0" href="/realTimeProducts">Real Time Products</a>
+                <a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="/chat">Chat</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="p-5">
+        <h1>Chat</h1>
+        <p class="lead">
+            You may chat with other users connected to this same page.<br>
+            You will receive messages updated in real time.
+        </p>
+
+        <div class="album py-5 bg-body-dark">
+            <div class="container" id="chat">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-lg-6 col-xl-5">
+                        <div class="card border-0 chat-container">
+                            <div class="card-header d-flex justify-content-between align-items-center p-3">
+                                <h5 class="mb-0">Messages</h5>
+                            </div>
+                            <div class="card-body">
+                                {{#each messages}}
+                                <div class="d-flex flex-row justify-content-start">
+                                    <img src="https://robohash.org/{{this.user}}" alt="avatar">
+                                    <div class="small ms-3 w-100">
+                                        <div class="d-flex justify-content-between">
+                                            <p class="small mb-1">{{this.user}}</p>
+                                            <p class="small mb-1 text-muted" data-timestamp="{{this.timestamp}}" />
+                                        </div>
+                                
+                                        <p class="mb-0 text-start">{{this.message}}</p>
+                                    </div>
+                                </div>
+                                {{else}}
+                                <div class="d-flex h-100 justify-content-center align-items-center">
+                                    <h5>Chat is empty</h5>
+                                </div>
+                                {{/each}}
+                            </div>
+                            <div class="card-footer text-muted d-flex justify-content-start align-items-center p-3">
+                                <div class="input-group mb-0">
+                                    <input class="form-control" id="chat-content" type="text" placeholder="Message..." />
+                                    <button class="btn btn-primary" id="chat-send" type="button">Send</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="mt-auto text-white-50">
+        <p>Code available on <a href="https://github.com/manu96lp/ch-prog-be" class="text-white">GitHub</a>.</p>
+    </footer>
+</div>

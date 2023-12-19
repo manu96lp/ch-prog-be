@@ -1,0 +1,240 @@
+{
+	"info": {
+		"_postman_id": "8fbbe4ef-c240-45db-902a-156e32d65563",
+		"name": "CoderHouse BE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12867658"
+	},
+	"item": [
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Banana\",\r\n    \"description\": \"Una banana\",\r\n    \"code\": \"BANANA\",\r\n    \"price\": 35.0,\r\n    \"stock\": 50,\r\n    \"category\": \"FRUTAS\",\r\n    \"thumbnails\": [\"https://images.emojiterra.com/google/noto-emoji/unicode-15/color/share/1f34c.jpg\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/products/",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"products",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/products/",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"products",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/products/11",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"products",
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Manzana\",\r\n    \"description\": \"Una manzana\",\r\n    \"code\": \"MANZ\",\r\n    \"price\": 25.0,\r\n    \"stock\": 3,\r\n    \"category\": \"FRUTAS\",\r\n    \"thumbnails\": [\"https://images.vexels.com/media/users/3/182371/isolated/lists/2f8c7e9f42c7781c3846b435475f92af-plano-de-fruta-de-manzana.png\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/products/11",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"products",
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/products/14",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"products",
+								"14"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Carts",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"products\": [\r\n        { \"product\": 11 }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/carts/",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"carts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/carts/0",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"carts",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Cart Product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"quantity\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/carts/0/product/0",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"carts",
+								"0",
+								"product",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Products By Cart Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/carts/1",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"carts",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Cart Product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/carts/0/product/0",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"carts",
+								"0",
+								"product",
+								"0"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
