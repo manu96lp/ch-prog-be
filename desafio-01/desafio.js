@@ -6,7 +6,6 @@ class ProductManager {
 
     addProduct = (product) => {
         const productToAdd = {
-            id: this.count,
             title: product.title,
             description: product.description,
             price: product.price,
@@ -23,6 +22,8 @@ class ProductManager {
             throw new Error('Duplicated product code');
         }
 
+        productToAdd.id = 1 + this.count;
+
         this.products.push(productToAdd);
         this.count++;
     }
@@ -32,7 +33,7 @@ class ProductManager {
     }
 
     getProductById = (id) => {
-        if (id >= 0 && id < count) {
+        if (id > 0 && id <= this.count) {
             const product = this.products.find((x) => x.id === id);
 
             if (product) {
@@ -42,4 +43,34 @@ class ProductManager {
         
         throw new Error('Product ID not found');
     }
+}
+
+const pm = new ProductManager();
+const newProduct = {
+    title: 'producto prueba',
+    description: 'Este es un producto prueba',
+    price: 200,
+    thumbnail: 'Sin imagen',
+    code: 'adc123',
+    stock: 25,
+};
+
+console.log(pm.getProducts());
+
+pm.addProduct(newProduct);
+
+console.log(pm.getProducts());
+
+try {
+    pm.addProduct(newProduct);
+} catch (ex) {
+    console.log(ex.message);
+}
+
+console.log(pm.getProductById(1));
+
+try {
+    pm.getProductById(0);
+} catch (ex) {
+    console.log(ex.message);
 }
