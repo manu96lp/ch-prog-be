@@ -16,7 +16,7 @@ class ProductManager {
     getProductById = async (id) => {
         await this.loadFromFile();
 
-        if (id >= 0 && id < this.count) {
+        if (id > 0 && id <= this.count) {
             const product = this.products.find((x) => x.id === id);
 
             if (product) {
@@ -45,7 +45,7 @@ class ProductManager {
             throw new Error('Duplicated product code');
         }
 
-        productToAdd.id = this.count;
+        productToAdd.id = 1 + this.count;
 
         this.count++;
         this.products.push(productToAdd);

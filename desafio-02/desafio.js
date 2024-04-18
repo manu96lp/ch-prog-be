@@ -7,16 +7,16 @@ class ProductManager {
         this.path = pathToFile;
     }
 
-    getProducts = () => {
-        this.loadFromFile();
+    getProducts = async () => {
+        await this.loadFromFile();
 
         return this.products;
     };
 
-    getProductById = (id) => {
-        this.loadFromFile();
-        
-        if (id >= 0 && id < count) {
+    getProductById = async (id) => {
+        await this.loadFromFile();
+
+        if (id > 0 && id <= this.count) {
             const product = this.products.find((x) => x.id === id);
 
             if (product) {
@@ -27,7 +27,7 @@ class ProductManager {
         throw new Error('Product ID not found');
     };
 
-    addProduct = (product) => {
+    addProduct = async (product) => {
         const productToAdd = {
             title: product.title,
             description: product.description,
@@ -45,16 +45,17 @@ class ProductManager {
             throw new Error('Duplicated product code');
         }
 
-        productToAdd.id = this.count;
+        productToAdd.id = 1 + this.count;
 
         this.count++;
         this.products.push(productToAdd);
-        this.saveToFile();
+
+        await this.saveToFile();
 
         return productToAdd.id;
     };
 
-    updateProduct = (id, fields) => {
+    updateProduct = async (id, fields) => {
         const productPos = this.products.findIndex((x) => x.id === id);
 
         if (productPos === -1) {
@@ -64,10 +65,11 @@ class ProductManager {
         delete fields.id;
 
         this.products[productPos] = { ...this.products[productPos], ...fields };
-        this.saveToFile();
+
+        await this.saveToFile();
     };
 
-    deleteProduct = (id) => {
+    deleteProduct = async (id) => {
         const updatedList = this.products.filter((x) => x.id !== id);
 
         if (updatedList.length === this.products.length) {
@@ -75,7 +77,8 @@ class ProductManager {
         }
 
         this.products = updatedList;
-        this.saveToFile();
+
+        await this.saveToFile();
     };
 
     loadFromFile = async () => {
