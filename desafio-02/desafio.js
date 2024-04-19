@@ -106,3 +106,32 @@ class ProductManager {
         }
     };
 }
+
+async function test() {
+    const pm = new ProductManager('data.txt');
+    const newProduct = {
+        title: 'producto prueba',
+        description: 'Este es un producto prueba',
+        price: 200,
+        thumbnail: 'Sin imagen',
+        code: 'adc123',
+        stock: 25,
+    };
+
+    await pm.addProduct(newProduct);
+
+    const firstProduct = await pm.getProductById(1);
+
+    console.log(await pm.getProducts());
+    console.log(firstProduct);
+
+    await pm.updateProduct(firstProduct.id, { ...firstProduct, stock: 30 });
+
+    console.log(await pm.getProducts());
+
+    await pm.deleteProduct(firstProduct.id);
+
+    console.log(await pm.getProducts());
+}
+
+test();
