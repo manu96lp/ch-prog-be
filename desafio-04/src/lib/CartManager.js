@@ -16,7 +16,7 @@ class CartManager {
     getCartById = async (id) => {
         await this.loadFromFile();
         
-        if (id >= 0 && id < this.count) {
+        if (id > 0 && id <= this.count) {
             const cart = this.carts.find((x) => x.id === id);
 
             if (cart) {
@@ -31,7 +31,7 @@ class CartManager {
         await this.loadFromFile();
 
         const cart = {
-            id: this.count,
+            id: this.count + 1,
             products: [...products],
         };
 

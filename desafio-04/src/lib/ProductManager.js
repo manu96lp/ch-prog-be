@@ -16,7 +16,7 @@ class ProductManager {
     getProductById = async (id) => {
         await this.loadFromFile();
 
-        if (id >= 0 && id < this.count) {
+        if (id > 0 && id <= this.count) {
             const product = this.products.find((x) => x.id === id);
 
             if (product) {
@@ -39,7 +39,7 @@ class ProductManager {
             stock: product.stock,
             category: product.category,
             thumbnails: product.thumbnails,
-        }
+        };
 
         if (Object.keys(productToAdd).some((x) => !productToAdd[x])) {
             throw new Error('Missing required fields');
@@ -49,7 +49,7 @@ class ProductManager {
             throw new Error('Duplicated product code');
         }
 
-        productToAdd.id = this.count;
+        productToAdd.id = this.count + 1;
 
         this.count++;
         this.products.push(productToAdd);
